@@ -42,7 +42,8 @@ with con:
 
   print df;
 
-  cur.execute("SELECT warm_month, average_high FROM weather GROUP BY warm_month")
+  cur.execute("INSERT INTO TABLE city_state_weather SELECT warm_month, average_high FROM weather GROUP BY warm_month");
+  cur.execute("SELECT * FROM city_state_weather");
   rows = cur.fetchall();
   df = pd.DataFrame(rows)
 
